@@ -20,7 +20,7 @@ currentChannel = 0
 currentNum = 0
 
 
-pygame.mixer.init()
+pygame.mixer.init() #win
 
 
 def playPause(channel):
@@ -41,7 +41,8 @@ def playPause(channel):
             nextNum = 0
     else:
         nextNum = 0
-    pygame.mixer.music.load(soundFiles[nextNum])
+    fileToLoad = myPath + r'/' + soundFiles[nextNum]
+    pygame.mixer.music.load(fileToLoad)
     currentChannel = channel
     currentNum = nextNum
     pygame.mixer.music.play()
