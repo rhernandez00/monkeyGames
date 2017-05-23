@@ -13,12 +13,14 @@ import numpy, os
 path = os.path.dirname(numpy.__file__)
 
 
-soundPath = r'D:\monkeyGames\sounds'
-soundType = ['\calls','\generated','\human',]
+soundPath = r'/home/pi/Desktop/monkeyGames/sounds'
+soundType = ['/calls','/generated','/human',]
 playing = False
 currentChannel = 0
 currentNum = 0
 
+
+pygame.mixer.init()
 
 
 def playPause(channel):
@@ -29,6 +31,7 @@ def playPause(channel):
     if playing:    
         pygame.mixer.music.stop()
     else:
+        
         playing = True
     myPath = soundPath + soundType[channel]
     soundFiles = [f for f in listdir(myPath) if isfile(join(myPath, f))]
