@@ -13,30 +13,6 @@ import RPi.GPIO as GPIO
 
 inputs = [16,20,21,26]
 
-GPIO.setmode(GPIO.BCM)
-for i in inputs:
-    GPIO.setup(i, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)#setup
-    GPIO.add_event_detect(i, GPIO.RISING) #event listeners
-
-#event callbacks
-GPIO.add_event_callback(inputs[0], playPause)
-GPIO.add_event_callback(inputs[1], playPause)
-GPIO.add_event_callback(inputs[2], playPause)
-GPIO.add_event_callback(inputs[4], stopSound)
-
-
-path = os.path.dirname(numpy.__file__)
-
-soundPath = r'/home/pi/Desktop/monkeyGames/sounds'
-soundType = ['/calls','/generated','/human',]
-playing = False
-currentChannel = 0
-currentNum = 0
-
-
-pygame.mixer.init() #win
-
-
 def playPause(inputVal):    
     global inputs
     global playing    
@@ -70,3 +46,28 @@ def stopSound(channel):
         playing = False        
     currentChannel = 0
     currentNum = 0
+
+GPIO.setmode(GPIO.BCM)
+for i in inputs:
+    GPIO.setup(i, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)#setup
+    GPIO.add_event_detect(i, GPIO.RISING) #event listeners
+
+#event callbacks
+GPIO.add_event_callback(inputs[0], playPause)
+GPIO.add_event_callback(inputs[1], playPause)
+GPIO.add_event_callback(inputs[2], playPause)
+GPIO.add_event_callback(inputs[4], stopSound)
+
+
+path = os.path.dirname(numpy.__file__)
+
+soundPath = r'/home/pi/Desktop/monkeyGames/sounds'
+soundType = ['/calls','/generated','/human',]
+playing = False
+currentChannel = 0
+currentNum = 0
+
+
+pygame.mixer.init() #win
+
+
