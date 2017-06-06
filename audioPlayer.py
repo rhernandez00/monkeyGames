@@ -15,8 +15,8 @@ inputs = [16,20,21,26]
 
 GPIO.setmode(GPIO.BCM)
 for i in inputs:
-    GPIO.setup(inputs[i], GPIO.IN, pull_up_down=GPIO.PUD_DOWN)#setup
-    GPIO.add_event_detect(inputs[i], GPIO.RISING) #event listeners
+    GPIO.setup(i, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)#setup
+    GPIO.add_event_detect(i, GPIO.RISING) #event listeners
 
 #event callbacks
 GPIO.add_event_callback(inputs[0], playPause)
