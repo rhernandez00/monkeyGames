@@ -36,6 +36,7 @@ def playPause(inputVal):
     currentChannel = channel
     currentNum = nextNum
     pygame.mixer.music.play()
+    print "playing"
 
 def stopSound(channel):
     global playing    
@@ -43,6 +44,7 @@ def stopSound(channel):
     global currentNum
     if playing:    
         pygame.mixer.music.stop()
+        print "stoping"
         playing = False        
     currentChannel = 0
     currentNum = 0
