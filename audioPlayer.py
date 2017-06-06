@@ -11,28 +11,18 @@ import pygame
 import numpy, os
 import RPi.GPIO as GPIO
 
-input1 = 16
-input2 = 20
-input3 = 21
-input4 = 26
+inputs = [16,20,21,26]
 
-#setup
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(input1, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(input2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(input3, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(input4, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+for i in inputs:
+    GPIO.setup(inputs[i], GPIO.IN, pull_up_down=GPIO.PUD_DOWN)#setup
+    GPIO.add_event_detect(inputs[i], GPIO.RISING) #event listeners
 
-#event listeners
-GPIO.add_event_detect(input1, GPIO.RISING)
-GPIO.add_event_detect(input2, GPIO.RISING)
-GPIO.add_event_detect(input3, GPIO.RISING)
-GPIO.add_event_detect(input4, GPIO.RISING)
 #event callbacks
-GPIO.add_event_callback(input1, playPause)
-GPIO.add_event_callback(input2, playPause)
-GPIO.add_event_callback(input3, playPause)
-GPIO.add_event_callback(input4, stopSound)
+GPIO.add_event_callback(inputs[0], playPause)
+GPIO.add_event_callback(inputs[1], playPause)
+GPIO.add_event_callback(inputs[2], playPause)
+GPIO.add_event_callback(inputs[4], stopSound)
 
 
 path = os.path.dirname(numpy.__file__)
@@ -47,11 +37,12 @@ currentNum = 0
 pygame.mixer.init() #win
 
 
-def playPause(channel):
-    
+def playPause(inputVal):    
+    global inputs
     global playing    
     global currentChannel
     global currentNum
+    channel = inputs.index(inputVal)
     if playing:    
         pygame.mixer.music.stop()
     else:
