@@ -56,7 +56,7 @@ for i in inputs:
 GPIO.add_event_callback(inputs[0], playPause)
 GPIO.add_event_callback(inputs[1], playPause)
 GPIO.add_event_callback(inputs[2], playPause)
-GPIO.add_event_callback(inputs[4], stopSound)
+GPIO.add_event_callback(inputs[3], stopSound)
 
 
 path = os.path.dirname(numpy.__file__)
