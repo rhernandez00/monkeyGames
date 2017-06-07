@@ -71,7 +71,7 @@ currentChannel = 0
 currentNum = 0
 
 
-pygame.mixer.init() #win
+#pygame.mixer.init() #win
 
 while True:
     time.sleep(60)
