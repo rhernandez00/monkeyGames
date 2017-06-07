@@ -10,6 +10,7 @@ from os.path import isfile, join
 import pygame
 import numpy, os
 import RPi.GPIO as GPIO
+import time
 
 inputs = [16,20,21,26]
 
@@ -71,5 +72,8 @@ currentNum = 0
 
 
 pygame.mixer.init() #win
+
+while True:
+    time.sleep(60)
 
 
