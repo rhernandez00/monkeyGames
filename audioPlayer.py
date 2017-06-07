@@ -73,7 +73,7 @@ currentNum = 0
 
 pygame.mixer.init() #win
 time.sleep(1)
-playPause(inputs[0])
+#playPause(inputs[0])
 
 while True:
     time.sleep(60)
